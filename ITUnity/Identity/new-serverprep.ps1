@@ -52,7 +52,7 @@ write-host "INFO: Setting the DNS server entries" -foregroundcolor Yellow -backg
 Set-DnsClientServerAddress -InterfaceAlias $nic.InterfaceAlias -ServerAddresses ("$dc")
 write-host "INFO: The new DNS server entry for "$nic.InterfaceAlias" is now:" -foregroundcolor Yellow -backgroundcolor black
 $list2 = Get-DnsClientServerAddress | Where-Object {$_.InterfaceAlias-eq $nic.InterfaceAlias}
-$list2
+$list2 | Select-Object InterfaceAlias,ServerAddresses
 #endregion 
 
 #region server name change
